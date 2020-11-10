@@ -31,7 +31,7 @@ app.use(cors());
 app.get('/', function (req, res) {
 
     //res.sendFile(__dirname + '/index.html');
-    const SQL = 'SELECT * FROM person';
+    const SQL = 'SELECT * FROM persons';
     connection.query(SQL, (err, result) => {
         if (err) {
             throw err;
@@ -69,11 +69,11 @@ app.post('/data', function (req, res) {
         });
     }); */
 
-    var sql = "INSERT INTO `Person`(`person_id`,`first_name`, `last_name`, `age`) VALUES ('" + req.body.id + "','" + req.body.firstname + "','" + req.body.lastname + "','" + req.body.age + "')";
+    var sql = "INSERT INTO `Persons`(`person_id`,`first_name`, `last_name`, `age`) VALUES ('" + req.body.id + "','" + req.body.firstname + "','" + req.body.lastname + "','" + req.body.age + "')";
     connection.query(sql, function (err, result) {
         if (err) throw err;
         console.log("1 record inserted");
-        const SQL = 'SELECT * FROM person';
+        const SQL = 'SELECT * FROM persons';
         connection.query(SQL, (err, result) => {
             if (err) {
                 res.send(err);
